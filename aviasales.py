@@ -20,7 +20,7 @@ def _fetch_month(origin: str, dest: str, month: str) -> list[dict]:
         "currency": config.CURRENCY,
         "one_way": "true",
         "sorting": "price",
-        "direct": "false",
+        "direct": "true" if config.DIRECT_ONLY else "false",
         "limit": 1000,
         "page": 1,
         "market": config.MARKET,
@@ -64,6 +64,8 @@ def _normalize(items: list[dict]) -> dict[str, dict]:
         if not price or not dep_iso:
             continue
         if config.MAX_PRICE and price > config.MAX_PRICE:
+            continue
+        if config.DIRECT_ONLY and item.get("transfers", 0) != 0:
             continue
         date = dep_iso[:10]  # YYYY-MM-DD
         if date in by_date and price >= by_date[date]["price"]:

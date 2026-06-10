@@ -2,8 +2,8 @@ name: flight-price-monitor
 
 on:
   schedule:
-    # Каждые 4 часа (UTC). Cron в Actions всегда в UTC.
-    - cron: "0 */4 * * *"
+    # Каждые 2 часа (UTC). Cron в Actions всегда в UTC.
+    - cron: "0 */2 * * *"
   workflow_dispatch: {}  # кнопка "Run workflow" для ручного запуска
 
 # Нужно, чтобы коммитить обновлённую историю цен обратно в репозиторий.

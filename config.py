@@ -50,6 +50,8 @@ MAX_STAY = int(_env("MAX_STAY", "14"))   # две недели
 DROP_THRESHOLD = float(_env("DROP_THRESHOLD", "0.15"))  # 0.15 = на 15% дешевле среднего
 # Максимум пар в одном уведомлении (самые дешёвые).
 MAX_ALERTS = int(_env("MAX_ALERTS", "5"))
+# Только прямые рейсы (без пересадок).
+DIRECT_ONLY = _env("DIRECT_ONLY", "true").lower() == "true"
 # Абсолютный потолок цены одного билета: дороже — игнор как мусор (0 = выключено).
 MAX_PRICE = int(_env("MAX_PRICE", "0"))
 
